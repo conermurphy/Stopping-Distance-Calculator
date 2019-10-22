@@ -3,92 +3,83 @@ import './App.css';
 
 const QA = [
   {
-    "ID": 1,
+    "ID": "1",
     "Question": "Q1",
     "Answer": "A1"
   },  
   {
-    "ID": 2,
+    "ID": "2",
     "Question": "Q2",
     "Answer": "A2"
   },
   {
-    "ID": 3,
+    "ID": "3",
     "Question": "Q3",
     "Answer": "A3"
   },  
   {
-    "ID": 4,
+    "ID": "4",
     "Question": "Q4",
     "Answer": "A4"
   },
 ];
 
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userAnswer: "",
+      useranswer: "",
       result: "",
-      ID: null,
-      question: "",
-      answer: ""
+      ranNum: Math.floor(Math.random()*QA.length),
     }
+
+    // this.answerCheck = this.answerCheck.bind(this);
   }
 
   handleChange = e => {
     this.setState({
-      userAnswer: e.target.useranswer
+      useranswer: e.target.value
     })
   }
 
-  ranQuestionGen() {
-    let ranNum = Math.floor(Math.random()*QA.length)
-    let ranID = QA[ranNum].ID;
-    let ranQuestion = QA[ranNum].Question;
-    let ranAnswer = QA[ranNum].Answer;
-    
-    console.log(ranID, ranQuestion, ranAnswer)
-    this.setState = ({
-      ID: ranID,
-      question: ranQuestion,
-      answer: ranAnswer
-    })
-  }
+  // answerCheck() {
+  //   console.log("clicked")
+  //   let checkOutcome;
+  //   if (this.state.useranswer === QA[this.state.ranNum].Answer)  {
+  //     console.log("Answer is correct")
+  //     checkOutcome = <p>Answer is correct!</p>   
+  //   } else {
+  //     console.log("Answer is incorrect")
+  //     checkOutcome = <p>Answer is incorrect!</p>
+  //   }
+  // }
   
-  validateAnswer() {
-    let correct;
+  render() {
 
-    if (this.state.userAnswer === this.state.answer)  {
-      correct = <p>this is correct</p>;
-    } else  {
-      correct = <p>Sorry, that is incorrect</p>;
+    let checkOutcome;
+    if (this.state.useranswer === QA[this.state.ranNum].Answer)  {
+      console.log("Answer is correct")
+      checkOutcome = <p>Answer is correct!</p>   
+    } else {
+      console.log("Answer is incorrect")
+      checkOutcome = <p>Answer is incorrect!</p>
     }
 
-    this.setState({
-      result: correct
-    })
-  }
-
-  render() {
   return (
     <div className="container">
       <h1>Stopping Distance Revision!</h1>
-      <div className="questionsAnswers">
         <div className="question">
-          <h2>{this.state.ID}</h2>
-          <p>{this.state.Question}</p>
+          <h3>{QA[this.state.ranNum].ID}</h3>
+          <p>{QA[this.state.ranNum].Question}</p>
         </div>
-        <div className="submission">
           <form>
-            <input type="text" name="answer" useranswer={this.state.userAnswer} onChange={this.handleChange} placeholder="Enter your answer here."></input>
+            <input type="text" name="answer" value={this.state.useranswer} onChange={this.handleChange} placeholder="Enter your answer here."></input>
           </form>
-          <button onClick={this.validateAnswer}>Submit!</button>
-        </div>
+          <button onClick={this.answerCheck}>Submit</button>
         <div className="answers">
-            {this.state.result}
+            {checkOutcome}
         </div>
-      </div>
     </div>
   );
   }
