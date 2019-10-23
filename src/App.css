@@ -1,5 +1,6 @@
 body  {
-  background-color: #999999;
+  background-color: #363537;
+  color: white;
 }
 
 .container  {
@@ -7,8 +8,59 @@ body  {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
-.questionsAnswers {
-  justify-self: center;
+.subContainer {
+  width: 25vw;
+}
+
+.QuestionContainer  {
+  
+}
+
+.QuestionID {
+  font-size: 2rem;
+  color: #ED7D3A;
+  text-align: left;
+  border-bottom: 2px solid #ED7D3A;
+  padding-bottom: 1rem;
+}
+
+.Question {
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  font-weight: 400;
+}
+
+.answerContainer  {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.resultText {
+  padding: 1rem 0;
+}
+
+input {
+  padding: 1rem;
+  font-size: 1rem;
+  background-color: #fefefe;
+  color: #363537;
+  border-radius: 10px;
+  margin-right: 2rem;
+  text-align: center;
+}
+
+button  {
+  padding: 1rem;
+  background-color: #fefefe;
+  color: #363537;
+  font-size: 1rem;
+  border-radius: 10px;
+}
+
+.nextQuestionButton {
+  font-size: 0.9rem;
 }
